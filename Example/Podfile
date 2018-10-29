@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'BLPart_Example' do
+  pod 'BLPart', :path => '../'
+
+  target 'BLPart_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
