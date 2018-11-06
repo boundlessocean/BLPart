@@ -42,7 +42,7 @@ static const CGFloat optionalViewHeight = 40.0;
     
     [self.view addSubview:self.optionalView];
     [self.view addSubview:self.mainScrollView];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     [self initializeSubViewControllerAtIndex:0];
     
     self.mainScrollView.contentSize = CGSizeMake(_titleArray.count *self.view.frame.size.width, self.mainScrollView.frame.size.height);
