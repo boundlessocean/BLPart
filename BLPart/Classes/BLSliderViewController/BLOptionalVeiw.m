@@ -23,6 +23,7 @@ static const CGFloat sliderViewWidth = 15;
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = UIColor.whiteColor;
         [self addSubview:self.sliderView];
         [self addSubview:self.lineView];
         /** 监听frame改变 */
