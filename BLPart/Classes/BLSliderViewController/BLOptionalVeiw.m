@@ -115,7 +115,7 @@ static const CGFloat sliderViewWidth = 15;
 - (UIView *)lineView{
     if (!_lineView) {
         _lineView = [UIView new];
-        _lineView.backgroundColor = [UIColor colorWithRed:224/255 green:224/255 blue:224/255 alpha:1];
+        _lineView.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1];
         _lineView.frame = CGRectMake(0, self.frame.size.height-0.5, self.frame.size.width, 0.5);
     }
     return _lineView;
