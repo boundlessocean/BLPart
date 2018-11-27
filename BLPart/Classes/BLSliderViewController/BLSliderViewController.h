@@ -18,6 +18,11 @@
 - (CGFloat)bl_viewOfChildViewControllerHeightInSliderViewController;
 /** 子视图起始位置（y），默认在状态栏之下 */
 - (CGFloat)bl_optionalViewStartYInSliderViewController;
+
+/** 标题偏移量，主要是针对2个选项需要偏移的情况 */
+- (CGFloat)bl_optionalViewTitleOffset;
+/** 分割线颜色 */
+- (UIColor *)bl_optionalViewLineColor;
 @end
 
 @interface BLSliderViewController : UIViewController

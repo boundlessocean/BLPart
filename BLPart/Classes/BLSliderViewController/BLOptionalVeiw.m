@@ -16,7 +16,7 @@
 @end
 
 static const CGFloat sliderViewWidth = 15;
-#define kItemWidth [UIScreen mainScreen].bounds.size.width/2
+#define kItemWidth [UIScreen mainScreen].bounds.size.width/(_titleArray.count ? _titleArray.count : 2)
 //#define sliderViewWidth SCREEN_WIDTH/2
 //static const CGFloat itemWidth = 60;
 @implementation BLOptionalVeiw
@@ -59,6 +59,14 @@ static const CGFloat sliderViewWidth = 15;
 
 #pragma mark - - set
 
+- (void)setLineColor:(UIColor *)lineColor{
+    if (lineColor) {
+        _lineColor = lineColor;
+        self.lineView.backgroundColor = _lineColor;
+    }
+}
+
+
 - (void)setTitleArray:(NSArray<NSString *> *)titleArray{
     _titleArray = titleArray;
     
@@ -68,6 +76,9 @@ static const CGFloat sliderViewWidth = 15;
         [item addTarget:self action:@selector(itemClicked:) forControlEvents:UIControlEventTouchUpInside];
         [item setTitle:titleArray[i] forState:UIControlStateNormal];
         item.titleLabel.font = [UIFont systemFontOfSize:15];
+        if (i < 2) {
+            [item setTitleEdgeInsets:UIEdgeInsetsMake(0, (i%-2) * self.titleOffset, 0, (i%-2 + 1) * self.titleOffset)];
+        }
         [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         item.tag = i + 100;
         [self addSubview:item];
@@ -80,6 +91,8 @@ static const CGFloat sliderViewWidth = 15;
     
     self.contentSize = CGSizeMake(kItemWidth*titleArray.count, self.frame.size.height);
 }
+
+
 
 - (void)setContentOffSetX:(CGFloat)contentOffSetX{
     _contentOffSetX = contentOffSetX;

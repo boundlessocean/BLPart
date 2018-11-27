@@ -15,4 +15,8 @@
 @property (nonatomic, copy) void (^titleItemClickedCallBackBlock)(NSInteger index);
 /** 偏移量 */
 @property (nonatomic, assign) CGFloat contentOffSetX;
+/** 标题偏移量 */
+@property (nonatomic, assign) CGFloat titleOffset;
+/** 分割线颜色 */
+@property (nonatomic, strong) UIColor *lineColor;
 @end
