@@ -66,6 +66,11 @@ static const CGFloat sliderViewWidth = 15;
     }
 }
 
+- (void)setTitleOffset:(CGFloat)titleOffset{
+    _titleOffset = titleOffset;
+    self.sliderView.titleOffset = _titleOffset;
+}
+
 
 - (void)setTitleArray:(NSArray<NSString *> *)titleArray{
     _titleArray = titleArray;
@@ -77,7 +82,7 @@ static const CGFloat sliderViewWidth = 15;
         [item setTitle:titleArray[i] forState:UIControlStateNormal];
         item.titleLabel.font = [UIFont systemFontOfSize:15];
         if (i < 2) {
-            [item setTitleEdgeInsets:UIEdgeInsetsMake(0, (i%-2) * self.titleOffset, 0, (i%-2 + 1) * self.titleOffset)];
+            [item setTitleEdgeInsets:UIEdgeInsetsMake(0, (i%2) * self.titleOffset, 0, (i%-2 + 1) * self.titleOffset)];
         }
         [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         item.tag = i + 100;
@@ -116,7 +121,7 @@ static const CGFloat sliderViewWidth = 15;
 
 - (BLSliderView *)sliderView{
     if (!_sliderView) {
-        _sliderView = [[BLSliderView alloc] initWithFrame:CGRectMake((kItemWidth - sliderViewWidth)/2, self.frame.size.height - 2, sliderViewWidth, 2)];
+        _sliderView = [[BLSliderView alloc] initWithFrame:CGRectMake((kItemWidth - sliderViewWidth)/2 + _titleOffset, self.frame.size.height - 2, sliderViewWidth, 2)];
         _sliderView.backgroundColor = [UIColor redColor];
         _sliderView.layer.cornerRadius = 2;
         _sliderView.layer.masksToBounds = YES;

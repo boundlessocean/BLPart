@@ -14,4 +14,7 @@
 /** item宽 */
 @property (nonatomic, assign) CGFloat itemWidth;
 @property (nonatomic, assign) CGFloat sliderWidth;
+
+/** 标题偏移量 */
+@property (nonatomic, assign) CGFloat titleOffset;
 @end

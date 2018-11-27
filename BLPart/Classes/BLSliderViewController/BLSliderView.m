@@ -20,8 +20,9 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     if (_progress > 0 && _progress <= 1) {
-        CGRect frame = self.frame;        frame.size.width = _sliderWidth + _itemWidth * (_progress > 0.5 ? 1 - _progress : _progress);
-        frame.origin.x = frame.origin.x + _itemWidth * _progress;
+        CGRect frame = self.frame;
+        frame.size.width = _sliderWidth + _itemWidth * (_progress > 0.5 ? 1 - _progress : _progress);
+        frame.origin.x = frame.origin.x + (_itemWidth - _titleOffset *2)  * _progress;
         self.frame = frame;
     }
 }
