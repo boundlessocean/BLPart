@@ -247,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = fuhaiyang;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 8DJVY2YJ73;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -501,6 +504,8 @@
 			baseConfigurationReference = 4E2EBCF09E80FAC123B3DFB2 /* Pods-BLPart_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVELOPMENT_TEAM = 8DJVY2YJ73;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BLPart/BLPart-Prefix.pch";
 				INFOPLIST_FILE = "BLPart/BLPart-Info.plist";
@@ -516,6 +521,8 @@
 			baseConfigurationReference = 5E073714505DE5AE458166B5 /* Pods-BLPart_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVELOPMENT_TEAM = 8DJVY2YJ73;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BLPart/BLPart-Prefix.pch";
 				INFOPLIST_FILE = "BLPart/BLPart-Info.plist";

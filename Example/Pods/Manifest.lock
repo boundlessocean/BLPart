@@ -14,19 +14,19 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - BLPart (0.1.0):
-    - BLPart/BLHTTPClient (= 0.1.0)
-    - BLPart/BLHUDManager (= 0.1.0)
-    - BLPart/BLIAPManager (= 0.1.0)
-    - BLPart/BLImagePickerController (= 0.1.0)
-    - BLPart/BLSliderViewController (= 0.1.0)
-  - BLPart/BLHTTPClient (0.1.0):
+  - BLPart (1.0.6):
+    - BLPart/BLHTTPClient (= 1.0.6)
+    - BLPart/BLHUDManager (= 1.0.6)
+    - BLPart/BLIAPManager (= 1.0.6)
+    - BLPart/BLImagePickerController (= 1.0.6)
+    - BLPart/BLSliderViewController (= 1.0.6)
+  - BLPart/BLHTTPClient (1.0.6):
     - AFNetworking
-  - BLPart/BLHUDManager (0.1.0):
+  - BLPart/BLHUDManager (1.0.6):
     - MBProgressHUD
-  - BLPart/BLIAPManager (0.1.0)
-  - BLPart/BLImagePickerController (0.1.0)
-  - BLPart/BLSliderViewController (0.1.0)
+  - BLPart/BLIAPManager (1.0.6)
+  - BLPart/BLImagePickerController (1.0.6)
+  - BLPart/BLSliderViewController (1.0.6)
   - MBProgressHUD (1.1.0)
 
 DEPENDENCIES:
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  BLPart: 2f6550ab6d10e833040fb9277a7c77e3e5581551
+  BLPart: 69fc0d7665e1ce6e31f24285eb19a68a337d6663
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
 
 PODFILE CHECKSUM: 86232310d30c50abb689e8b35ace8d1e87c1b364

@@ -66,7 +66,6 @@ static const CGFloat sliderViewWidth = 15;
 
 - (void)setTitleOffset:(CGFloat)titleOffset{
     _titleOffset = titleOffset;
-    self.sliderView.titleOffset = _titleOffset;
 }
 
 
