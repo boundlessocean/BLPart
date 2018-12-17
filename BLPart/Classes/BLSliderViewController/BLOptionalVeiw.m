@@ -24,8 +24,6 @@ static const CGFloat sliderViewWidth = 15;
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = UIColor.whiteColor;
-        [self addSubview:self.sliderView];
-        [self addSubview:self.lineView];
         /** 监听frame改变 */
         [self addObserver:self forKeyPath:@"_sliderView.frame" options:NSKeyValueObservingOptionNew context:nil];
         
@@ -74,6 +72,10 @@ static const CGFloat sliderViewWidth = 15;
 
 - (void)setTitleArray:(NSArray<NSString *> *)titleArray{
     _titleArray = titleArray;
+    
+    
+    [self addSubview:self.sliderView];
+    [self addSubview:self.lineView];
     
     // 添加所有item
     for (NSInteger i = 0; i < titleArray.count; i++) {
