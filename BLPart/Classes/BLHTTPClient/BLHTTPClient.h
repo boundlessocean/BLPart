@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 响应配置 */
 + (void)configResponseSerializer:(ResponseSerializer)responseSerializer;
 
+/** Base URL配置 */
++ (void)configBaseURL:(NSString *)url;
+
 /** 配置证书 */
 + (void)configCertificate:(NSString *)certificateName;
 

@@ -320,6 +320,10 @@ static const AFHTTPSessionManager *sessionManager;
 
 #pragma mark - - Public
 
++ (void)configBaseURL:(NSString *)url{
+    sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:url] sessionConfiguration:NSURLSessionConfiguration.defaultSessionConfiguration];
+}
+
 + (void)configCertificate:(NSString *)certificateName{
     NSString *certFilePath = [[NSBundle mainBundle] pathForResource:certificateName ofType:@"der"];
     NSData *certData = [NSData dataWithContentsOfFile:certFilePath];
