@@ -20,6 +20,8 @@
 
 
 @interface MBProgressHUD (BL)
+// 显示指示器
++ (MBProgressHUD *)showIndicator;
 
 // 隐藏HUD
 + (void)hide:(BOOL)animated;

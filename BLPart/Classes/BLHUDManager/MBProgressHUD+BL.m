@@ -56,9 +56,20 @@ static char containerViewKey;
 // 隐藏HUD
 + (void)hide:(BOOL)animated{
     UIView *containerView = objc_getAssociatedObject(self, &containerViewKey);
-    if (containerView) {
-        MBProgressHUD *hud = [MBProgressHUD HUDForView:containerView];
-        [hud hideAnimated:YES];
-    }
+    containerView = containerView ? containerView : [UIApplication sharedApplication].keyWindow;
+    
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:containerView];
+    [hud hideAnimated:YES];
+}
+
+// 显示指示器
++  (MBProgressHUD *)showIndicator{
+    UIView *containerView = [UIApplication sharedApplication].keyWindow;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:containerView animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.animationType = MBProgressHUDAnimationZoomOut;
+    hud.margin = 10;
+    hud.removeFromSuperViewOnHide = YES;
+    return hud;
 }
 @end
