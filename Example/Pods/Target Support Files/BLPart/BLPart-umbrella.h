@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "BLBannerView.h"
+#import "BLPageControlView.h"
 #import "BLEngineConfigure.h"
 #import "BLHTTPClient.h"
 #import "NSError+BLLocalliszed.h"

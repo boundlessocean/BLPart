@@ -7,6 +7,8 @@
 //
 
 #import "MyViewController.h"
+@import Masonry;
+@import BLPart.BLBannerView;
 @import BLPart.BLSliderViewController;
 
 @interface MyViewController ()<BLSliderViewControllerDataSource>
@@ -33,6 +35,16 @@
     [super viewWillAppear:animated];
     [self addChildViewController:self.sliderVC];
     [self.view addSubview:self.sliderVC.view];
+    
+    BLBannerView *banner = BLBannerView.new;
+    [self.view addSubview:banner];
+    [banner mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.mas_equalTo(0);
+        make.height.mas_equalTo(200);
+    }];
+    
+    
+    banner.datas = @[@"https://relottery.nosdn.127.net/thread/20181220/RQKGEQ.jpg",@"https://relottery.nosdn.127.net/thread/20181219/VQB4Ae.jpg",@"https://relottery.nosdn.127.net/thread/20180617/5yWdl5.jpg"];
 }
 
 #pragma mark - - Getter

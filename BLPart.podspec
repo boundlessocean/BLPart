@@ -30,6 +30,12 @@ Pod::Spec.new do |s|
     
     s.ios.deployment_target = '8.0'
     
+    s.subspec 'BLBannerView' do |ss|
+        ss.source_files = 'BLPart/Classes/BLBannerView/**/*'
+        ss.dependency 'AFNetworking'
+        ss.dependency 'Masonry'
+    end
+    
     s.subspec 'BLHTTPClient' do |ss|
         ss.source_files = 'BLPart/Classes/BLHTTPClient/**/*'
         ss.dependency 'AFNetworking'
