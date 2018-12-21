@@ -335,7 +335,7 @@ static const AFHTTPSessionManager *sessionManager;
 
 + (void)configRequestSerializer:(RequestSerializer)requestSerializer{
     if (requestSerializer) {
-        requestSerializer(sessionManager.requestSerializer);
+        sessionManager.requestSerializer = requestSerializer(sessionManager.requestSerializer);
     }
 }
 

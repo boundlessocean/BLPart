@@ -20,7 +20,7 @@ typedef void (^ConstructingBodyBlock)(id<AFMultipartFormData>  _Nonnull formData
 typedef NSURL* _Nonnull (^DestinationPathBlock)(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response);
 
 /** 请求配置 */
-typedef void (^RequestSerializer)(AFHTTPRequestSerializer <AFURLRequestSerialization> * _Nonnull requestSerializer);
+typedef AFHTTPRequestSerializer <AFURLRequestSerialization> * (^RequestSerializer)(AFHTTPRequestSerializer <AFURLRequestSerialization> * _Nonnull requestSerializer);
 /** 响应配置 */
 typedef void (^ResponseSerializer)(AFHTTPResponseSerializer <AFURLResponseSerialization> * _Nonnull responseSerializer);
 
