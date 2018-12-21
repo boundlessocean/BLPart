@@ -39,7 +39,7 @@ static const CGFloat margin = 4;
 - (void)setCurrentPage:(NSInteger)currentPage{
     _currentPage = currentPage;
     UIView *current = [self viewWithTag:100+_currentPage];
-    current.backgroundColor = UIColor.yellowColor;
+    current.backgroundColor = UIColor.whiteColor;
     for (int i = 0; i < _numberOfPages; i++) {
         UIView *view = [self viewWithTag:i+100];
         if (current == view) continue;

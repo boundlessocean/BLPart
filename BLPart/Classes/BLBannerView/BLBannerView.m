@@ -23,7 +23,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addSubview:self.banner];
-        [self addSubview:self.pageControl];
         [_banner mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
@@ -50,18 +49,24 @@
 #pragma mark - - Setter
 - (void)setDatas:(NSArray *)datas{
     _datas = datas;
+    
+    [self layoutIfNeeded];
+    
     NSMutableArray *tempArray = [_datas mutableCopy];
+    
+    [self addSubview:self.pageControl];
     if (_datas.count > 1) {
         [tempArray addObject:_datas.firstObject];
         _pageControl.numberOfPages = _datas.count;
     }
   
-    [self layoutIfNeeded];
     
     CGFloat Screen_Width =  UIScreen.mainScreen.bounds.size.width;
     for (int i = 0; i < tempArray.count; i++) {
         UIImageView *image = UIImageView.new;
+        image.userInteractionEnabled = YES;
         [self.banner addSubview:image];
+        image.tag = i+200;
         [image setImageWithURL:[NSURL URLWithString:tempArray[i]]];
         [image mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(Screen_Width*i);
@@ -69,6 +74,10 @@
             make.width.mas_equalTo(Screen_Width);
             make.height.mas_equalTo(self.banner.mas_height);
         }];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        
+        if (i != tempArray.count - 1) [image addGestureRecognizer:tap];
     }
     self.banner.contentSize = CGSizeMake(tempArray.count*Screen_Width, self.banner.bounds.size.height);
     if (_datas.count > 1) {
@@ -77,6 +86,11 @@
 }
 
 #pragma mark - - Private
+
+- (void)tapAction:(UITapGestureRecognizer *)tap{
+    UIImageView *image = (UIImageView *)tap.view;
+    !self.bs_viewAction ? : self.bs_viewAction(@1,@(image.tag - 200),NULL);
+}
 
 - (void)xm_configTimer{
     if (_timer) {
