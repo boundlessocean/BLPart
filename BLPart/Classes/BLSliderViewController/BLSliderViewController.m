@@ -76,6 +76,7 @@ static const CGFloat optionalViewHeight = 40.0;
         _mainScrollView.showsHorizontalScrollIndicator = NO;
         _mainScrollView.pagingEnabled = YES;
         _mainScrollView.bounces = NO;
+        _mainScrollView.tag = 200;
     }
     return _mainScrollView;
 }
