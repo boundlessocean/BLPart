@@ -78,7 +78,7 @@ static BOOL bl_isEditImage = YES;
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     NSString * mediaType = info[UIImagePickerControllerMediaType];
-    if (mediaType == (NSString *)kUTTypeImage) {
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         if (bl_isEditImage) {
             self.image = info[UIImagePickerControllerEditedImage];
         }else {
