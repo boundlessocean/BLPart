@@ -66,7 +66,7 @@ static char containerViewKey;
 }
 
 // 显示指示器
-+  (MBProgressHUD *)showIndicator{
++  (MBProgressHUD *)showLoding{
     UIView *containerView = [UIApplication sharedApplication].keyWindow;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:containerView animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
