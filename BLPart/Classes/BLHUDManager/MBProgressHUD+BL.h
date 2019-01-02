@@ -21,10 +21,10 @@
 
 @interface MBProgressHUD (BL)
 // 显示指示器
-+ (MBProgressHUD *)showIndicator;
++ (MBProgressHUD *)showLoding;
 
 // 隐藏HUD
-+ (void)hide:(BOOL)animated;
++ (void)dismiss;
 
 // 1.5s 后消失
 + (MBProgressHUD *)showMsg:(NSString *)message;

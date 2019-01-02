@@ -14,18 +14,21 @@ static char containerViewKey;
 
 + (MBProgressHUD *)showMsg:(NSString *)message{
     UIView *containerView = [UIApplication sharedApplication].keyWindow;
+    [MBProgressHUD dismiss];
     return [self showMsg:message inView:containerView delay:1.5];
 }
 
 + (MBProgressHUD *)showMsg:(NSString *)message
                      delay:(NSTimeInterval)timeInterval{
     UIView *containerView = [UIApplication sharedApplication].keyWindow;
+    [MBProgressHUD dismiss];
     return [self showMsg:message inView:containerView delay:timeInterval];
 }
 
 + (MBProgressHUD *)showBottomMsg:(NSString *)message
                            delay:(NSTimeInterval)timeInterval{
     UIView *containerView = [UIApplication sharedApplication].keyWindow;
+    [MBProgressHUD dismiss];
     MBProgressHUD *hud = [MBProgressHUD showMsg:message inView:containerView delay:timeInterval];
     hud.offset = CGPointMake(0.f, [UIScreen mainScreen].bounds.size.height/2 - 100);
     return hud;
@@ -54,7 +57,7 @@ static char containerViewKey;
 
 
 // 隐藏HUD
-+ (void)hide:(BOOL)animated{
++ (void)dismiss{
     UIView *containerView = objc_getAssociatedObject(self, &containerViewKey);
     containerView = containerView ? containerView : [UIApplication sharedApplication].keyWindow;
     
