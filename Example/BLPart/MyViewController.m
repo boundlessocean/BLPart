@@ -33,8 +33,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self addChildViewController:self.sliderVC];
-    [self.view addSubview:self.sliderVC.view];
+//    [self addChildViewController:self.sliderVC];
+//    [self.view addSubview:self.sliderVC.view];
     
     BLBannerView *banner = BLBannerView.new;
     [self.view addSubview:banner];

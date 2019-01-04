@@ -39,11 +39,8 @@
     }
     
     if (index == _datas.count) {
-        CGPoint offset = self->_banner.contentOffset;
-        offset.x = 0;
-        self->_banner.contentOffset = offset;
+        self.pageControl.currentPage = 0;
     }
-    
 }
 
 #pragma mark - - Setter
@@ -107,10 +104,15 @@
                 offset.x = self->_banner.contentOffset.x + UIScreen.mainScreen.bounds.size.width;
                 self->_banner.contentOffset = offset;
             } completion:^(BOOL finished) {
+                
                 if (self->_banner.contentOffset.x/UIScreen.mainScreen.bounds.size.width == self->_datas.count) {
-                    CGPoint offset = self->_banner.contentOffset;
-                    offset.x = 0;
-                    self->_banner.contentOffset = offset;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        CGPoint offset = self->_banner.contentOffset;
+                        offset.x = 0;
+                        self->_banner.contentOffset = offset;
+                    });
+                    
+                    
                 }
             }];
             
@@ -136,7 +138,7 @@
 - (BLPageControlView *)pageControl{
     if (!_pageControl) {
         _pageControl = [BLPageControlView new];
-        _pageControl.indecationWidth = 12;
+        _pageControl.indecationWidth = 6;
     }
     return _pageControl;
 }
