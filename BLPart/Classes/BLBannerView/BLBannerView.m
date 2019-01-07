@@ -13,9 +13,10 @@
 
 @property (nonatomic ,strong) UIScrollView *banner;
 @property (nonatomic ,strong) BLPageControlView *pageControl;
+@property (nonatomic, copy) void(^animationBlock)(BOOL isfinish) ;
+@property (nonatomic, assign) BOOL isfinish;
 @end
-@implementation BLBannerView
-{
+@implementation BLBannerView{
     dispatch_source_t _timer;
 }
 
@@ -26,6 +27,12 @@
         [_banner mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
         }];
+        
+        __weak typeof(self) weakself = self;
+        self.animationBlock = ^(BOOL isfinish) {
+            weakself.isfinish = isfinish;
+            [weakself p_update];
+        };
     }
     return self;
 }
@@ -41,6 +48,31 @@
     if (index == _datas.count) {
         self.pageControl.currentPage = 0;
     }
+    [self p_update];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    dispatch_suspend(_timer);
+}
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    dispatch_resume(_timer);
+}
+
+
+
+- (void)p_update{
+    if (_isfinish) {
+        if (self.banner.contentOffset.x/UIScreen.mainScreen.bounds.size.width >= self.datas.count) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                CGPoint offset = self.banner.contentOffset;
+                offset.x = 0;
+                self.banner.contentOffset = offset;
+            });
+        }
+    }
+    
 }
 
 #pragma mark - - Setter
@@ -62,6 +94,7 @@
     for (int i = 0; i < tempArray.count; i++) {
         UIImageView *image = UIImageView.new;
         image.userInteractionEnabled = YES;
+        image.contentMode = UIViewContentModeScaleAspectFit;
         [self.banner addSubview:image];
         image.tag = i+200;
         [image setImageWithURL:[NSURL URLWithString:tempArray[i]]];
@@ -100,20 +133,15 @@
     dispatch_source_set_event_handler(_timer, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.3 animations:^{
+                self.isfinish = NO;
                 CGPoint offset = self->_banner.contentOffset;
                 offset.x = self->_banner.contentOffset.x + UIScreen.mainScreen.bounds.size.width;
                 self->_banner.contentOffset = offset;
-            } completion:^(BOOL finished) {
                 
-                if (self->_banner.contentOffset.x/UIScreen.mainScreen.bounds.size.width == self->_datas.count) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        CGPoint offset = self->_banner.contentOffset;
-                        offset.x = 0;
-                        self->_banner.contentOffset = offset;
-                    });
-                    
-                    
-                }
+            } completion:^(BOOL finished) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    !self.animationBlock ? : self.animationBlock(finished);
+                });
             }];
             
         });
