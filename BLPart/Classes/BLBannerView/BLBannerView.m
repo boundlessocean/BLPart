@@ -30,7 +30,7 @@
         
         __weak typeof(self) weakself = self;
         self.animationBlock = ^(BOOL isfinish) {
-            weakself.isfinish = isfinish;
+            weakself.isfinish = YES;
             [weakself p_update];
         };
     }
