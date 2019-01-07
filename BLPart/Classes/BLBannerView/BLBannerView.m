@@ -94,7 +94,7 @@
     for (int i = 0; i < tempArray.count; i++) {
         UIImageView *image = UIImageView.new;
         image.userInteractionEnabled = YES;
-        image.contentMode = UIViewContentModeScaleAspectFit;
+        image.contentMode = UIViewContentModeScaleAspectFill;
         [self.banner addSubview:image];
         image.tag = i+200;
         [image setImageWithURL:[NSURL URLWithString:tempArray[i]]];

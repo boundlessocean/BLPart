@@ -44,7 +44,8 @@
     }];
     
     
-    banner.datas = @[@"https://relottery.nosdn.127.net/thread/20181220/RQKGEQ.jpg",@"https://relottery.nosdn.127.net/thread/20181219/VQB4Ae.jpg",@"https://relottery.nosdn.127.net/thread/20180617/5yWdl5.jpg"];
+    
+    banner.datas = @[@"http://racebmst.jingcaishuo.net//static/upfiles/analyst/5e075ac09d56d53f/20181220_173106146000_901.jpg",@"http://racebmst.jingcaishuo.net//static/upfiles/analyst/5e075ac09d56d53f/20181129_113402912000_531.jpg"];
 }
 
 #pragma mark - - Getter
