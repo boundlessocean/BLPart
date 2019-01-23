@@ -63,6 +63,7 @@ static const CGFloat optionalViewHeight = 40.0;
         _optionalView = [[BLOptionalVeiw alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, optionalViewHeight)];
         _optionalView.titleOffset = [self.dataSource respondsToSelector:@selector(bl_optionalViewTitleOffset)] ? self.dataSource.bl_optionalViewTitleOffset : 0;
         _optionalView.lineColor = [self.dataSource respondsToSelector:@selector(bl_optionalViewLineColor)] ? self.dataSource.bl_optionalViewLineColor : nil;
+        _optionalView.backgroundColor = [self.dataSource respondsToSelector:@selector(bl_optionalViewBGColor)] ? self.dataSource.bl_optionalViewBGColor : UIColor.whiteColor;
         _optionalView.titleArray = self.titleArray;
     }
     return _optionalView;

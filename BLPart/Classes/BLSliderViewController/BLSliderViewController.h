@@ -23,6 +23,8 @@
 - (CGFloat)bl_optionalViewTitleOffset;
 /** 分割线颜色 */
 - (UIColor *)bl_optionalViewLineColor;
+/** 背景颜色 */
+- (UIColor *)bl_optionalViewBGColor;
 @end
 
 @interface BLSliderViewController : UIViewController
