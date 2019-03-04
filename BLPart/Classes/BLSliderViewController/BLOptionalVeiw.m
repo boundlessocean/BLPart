@@ -122,7 +122,7 @@ static const CGFloat sliderViewWidth = 15;
 
 - (BLSliderView *)sliderView{
     if (!_sliderView) {
-        _sliderView = [[BLSliderView alloc] initWithFrame:CGRectMake((kItemWidth - sliderViewWidth)/2 + _titleOffset, self.frame.size.height - 2, sliderViewWidth, 2)];
+        _sliderView = [[BLSliderView alloc] initWithFrame:CGRectMake((kItemWidth - sliderViewWidth)/2 + _titleOffset, self.frame.size.height - 4, sliderViewWidth, 3)];
         _sliderView.backgroundColor = [UIColor redColor];
         _sliderView.layer.cornerRadius = 2;
         _sliderView.layer.masksToBounds = YES;
