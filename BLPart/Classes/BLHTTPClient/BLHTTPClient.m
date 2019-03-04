@@ -131,9 +131,8 @@
 /** 网络请求管理类 */
 static const AFHTTPSessionManager *sessionManager;
 
-
-+ (void)initialize{
-    [super initialize];
++ (void)load{
+    [super load];
     sessionManager = [AFHTTPSessionManager manager];
 }
 
