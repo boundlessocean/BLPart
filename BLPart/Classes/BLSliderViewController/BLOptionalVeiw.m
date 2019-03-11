@@ -25,15 +25,10 @@ static const CGFloat sliderViewWidth = 15;
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = UIColor.whiteColor;
         /** 监听frame改变 */
-        [self.sliderView  addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+        [self addObserver:self forKeyPath:@"_sliderView.frame" options:NSKeyValueObservingOptionNew context:nil];
         
     }
     return self;
-}
-
-
-- (void)dealloc{
-    [self.sliderView removeObserver:self forKeyPath:@"frame"];
 }
 
 /** 接收通知 */
