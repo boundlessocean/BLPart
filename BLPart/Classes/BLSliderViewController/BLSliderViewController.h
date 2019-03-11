@@ -25,6 +25,10 @@
 - (UIColor *)bl_optionalViewLineColor;
 /** 背景颜色 */
 - (UIColor *)bl_optionalViewBGColor;
+
+
+/** 选中按钮回调 */
+- (void)bl_selectedIndex:(NSInteger)index scorllView:(UIScrollView *)scorllView;
 @end
 
 @interface BLSliderViewController : UIViewController

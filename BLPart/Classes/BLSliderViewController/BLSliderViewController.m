@@ -22,9 +22,7 @@ static const CGFloat optionalViewHeight = 40.0;
 {
     /** 缓存VC index */
     NSMutableArray<NSNumber *> *_cacheVCIndex;
-}
-- (void)dealloc{
-    [self removeObserver:_optionalView forKeyPath:@"_optionalView.sliderView.frame"];
+    CGFloat _oldOffsetX;
 }
 
 - (void)viewDidLoad {
@@ -52,7 +50,11 @@ static const CGFloat optionalViewHeight = 40.0;
 - (void)dealButtonCallBackBlcok{
     __weak BLSliderViewController *weakSelf = self;
     _optionalView.titleItemClickedCallBackBlock = ^(NSInteger index){
-        weakSelf.mainScrollView.contentOffset = CGPointMake((index - 100) * self.view.frame.size.width , 0);
+        weakSelf.mainScrollView.contentOffset = CGPointMake((index - 100) * weakSelf.view.frame.size.width , 0);
+        if (weakSelf.dataSource &&
+            [weakSelf.dataSource respondsToSelector:@selector(bl_selectedIndex:scorllView:)]) {
+            [weakSelf.dataSource bl_selectedIndex:(index-100) scorllView:weakSelf.mainScrollView];
+        }
     };
 }
 
@@ -100,6 +102,20 @@ static const CGFloat optionalViewHeight = 40.0;
     self.optionalView.contentOffSetX = scrollView.contentOffset.x;
     if (index == 0) return;
     [self initializeSubViewControllerAtIndex:index];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    _oldOffsetX = scrollView.contentOffset.x;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    if (self.dataSource &&
+        scrollView.contentOffset.x != _oldOffsetX &&
+        [self.dataSource respondsToSelector:@selector(bl_selectedIndex:scorllView:)]) {
+        NSInteger index = scrollView.contentOffset.x/scrollView.frame.size.width;
+        [self.dataSource bl_selectedIndex:index scorllView:scrollView];
+    }
 }
 
 #pragma mark - - private

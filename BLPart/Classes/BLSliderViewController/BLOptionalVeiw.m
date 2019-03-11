@@ -25,10 +25,15 @@ static const CGFloat sliderViewWidth = 15;
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = UIColor.whiteColor;
         /** 监听frame改变 */
-        [self addObserver:self forKeyPath:@"_sliderView.frame" options:NSKeyValueObservingOptionNew context:nil];
+        [self.sliderView  addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
         
     }
     return self;
+}
+
+
+- (void)dealloc{
+    [self.sliderView removeObserver:self forKeyPath:@"frame"];
 }
 
 /** 接收通知 */
@@ -81,7 +86,7 @@ static const CGFloat sliderViewWidth = 15;
         BLTitleItem *item = [[BLTitleItem alloc] initWithFrame:CGRectMake(i*kItemWidth, 0, kItemWidth, self.frame.size.height)];
         [item addTarget:self action:@selector(itemClicked:) forControlEvents:UIControlEventTouchUpInside];
         [item setTitle:titleArray[i] forState:UIControlStateNormal];
-        item.titleLabel.font = [UIFont systemFontOfSize:15];
+        item.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         if (i < 2) {
             [item setTitleEdgeInsets:UIEdgeInsetsMake(0, (i%2) * self.titleOffset, 0, (i%-2 + 1) * self.titleOffset)];
         }
