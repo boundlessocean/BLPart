@@ -67,6 +67,7 @@ static const CGFloat optionalViewHeight = 40.0;
         _optionalView.lineColor = [self.dataSource respondsToSelector:@selector(bl_optionalViewLineColor)] ? self.dataSource.bl_optionalViewLineColor : nil;
         _optionalView.backgroundColor = [self.dataSource respondsToSelector:@selector(bl_optionalViewBGColor)] ? self.dataSource.bl_optionalViewBGColor : UIColor.whiteColor;
         _optionalView.titleArray = self.titleArray;
+        _optionalView.tag = 201;
     }
     return _optionalView;
 }
