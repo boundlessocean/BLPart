@@ -159,7 +159,7 @@
                       leftItem:leftItem
                      rightItem:rightItem];
     /** 更新contentOffset */
-//    [self updateContentOffset];
+    [self updateContentOffset];
 }
 
 #pragma mark - - lazy load
