@@ -19,8 +19,8 @@
 #import "BLIAPManager.h"
 #import "BLImagePickerController.h"
 #import "BLOptionalVeiw.h"
+#import "BLPagesViewController.h"
 #import "BLSliderView.h"
-#import "BLSliderViewController.h"
 #import "BLTitleItem.h"
 
 FOUNDATION_EXPORT double BLPartVersionNumber;

@@ -1,24 +1,19 @@
 //
 //  BLSliderViewController.m
-//  BLSinaNewsSliderViewControllerDemo
+//  BLPageSldierTool
 //
-//  Created by boundlessocean on 2016/12/23.
-//  Copyright © 2016年 ocean. All rights reserved.
+//  Created by 付海洋 on 2019/10/17.
 //
 
-#import "BLSliderViewController.h"
-#import "BLOptionalVeiw.h"
-
-
-@interface BLSliderViewController ()<UIScrollViewDelegate>
+#import "BLPagesViewController.h"
+#import "Masonry.h"
+@interface BLPagesViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) BLOptionalVeiw *optionalView;
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 @property (nonatomic, strong) NSArray<NSString *> *titleArray;
 @end
 
-static const CGFloat optionalViewHeight = 40.0;
-
-@implementation BLSliderViewController
+@implementation BLPagesViewController
 {
     /** 缓存VC index */
     NSMutableArray<NSNumber *> *_cacheVCIndex;
@@ -36,19 +31,30 @@ static const CGFloat optionalViewHeight = 40.0;
 /** 添加子视图 */
 - (void)initSubViews{
     _cacheVCIndex = [NSMutableArray arrayWithCapacity:0];
-    self.view.frame = CGRectMake(self.view.frame.origin.x, [self getOptionalStartY], self.view.frame.size.width, optionalViewHeight + [self getScrollViewHeight]);
     
     [self.view addSubview:self.optionalView];
     [self.view addSubview:self.mainScrollView];
+    
+    [_optionalView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(0);
+        make.height.mas_equalTo(self.itemHeight);
+        make.width.mas_equalTo(self.view.frame.size.width);
+    }];
+    
+    [_mainScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(self.optionalView.mas_bottom).offset(10);
+        make.bottom.mas_equalTo(0);
+    }];
+    
     self.view.backgroundColor = [UIColor clearColor];
     [self initializeSubViewControllerAtIndex:0];
-    
-    self.mainScrollView.contentSize = CGSizeMake(_titleArray.count *self.view.frame.size.width, self.mainScrollView.frame.size.height);
+    self.mainScrollView.contentSize = CGSizeMake(_titleArray.count *self.view.frame.size.width, self.view.frame.size.height - self.itemHeight - 10);
 }
 
 /** 处理事件回调 */
 - (void)dealButtonCallBackBlcok{
-    __weak BLSliderViewController *weakSelf = self;
+    __weak BLPagesViewController *weakSelf = self;
     _optionalView.titleItemClickedCallBackBlock = ^(NSInteger index){
         weakSelf.mainScrollView.contentOffset = CGPointMake((index - 100) * weakSelf.view.frame.size.width , 0);
         if (weakSelf.dataSource &&
@@ -58,32 +64,6 @@ static const CGFloat optionalViewHeight = 40.0;
     };
 }
 
-#pragma mark - - lazy load
-
-- (BLOptionalVeiw *)optionalView{
-    if (!_optionalView) {
-        _optionalView = [[BLOptionalVeiw alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, optionalViewHeight)];
-        _optionalView.titleOffset = [self.dataSource respondsToSelector:@selector(bl_optionalViewTitleOffset)] ? self.dataSource.bl_optionalViewTitleOffset : 0;
-        _optionalView.lineColor = [self.dataSource respondsToSelector:@selector(bl_optionalViewLineColor)] ? self.dataSource.bl_optionalViewLineColor : nil;
-        _optionalView.backgroundColor = [self.dataSource respondsToSelector:@selector(bl_optionalViewBGColor)] ? self.dataSource.bl_optionalViewBGColor : UIColor.whiteColor;
-        _optionalView.titleArray = self.titleArray;
-        _optionalView.tag = 201;
-    }
-    return _optionalView;
-}
-
-- (UIScrollView *)mainScrollView{
-    if (!_mainScrollView) {
-        _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.optionalView.frame), self.view.frame.size.width, [self getScrollViewHeight])];
-        _mainScrollView.delegate = self;
-        _mainScrollView.showsVerticalScrollIndicator = NO;
-        _mainScrollView.showsHorizontalScrollIndicator = NO;
-        _mainScrollView.pagingEnabled = YES;
-        _mainScrollView.bounces = NO;
-        _mainScrollView.tag = 200;
-    }
-    return _mainScrollView;
-}
 
 - (NSArray *)titleArray{
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(bl_titlesArrayInSliderViewController)]) {
@@ -119,23 +99,6 @@ static const CGFloat optionalViewHeight = 40.0;
     }
 }
 
-#pragma mark - - private
-
-- (CGFloat)getOptionalStartY{
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(bl_optionalViewStartYInSliderViewController)]) {
-        return [self.dataSource bl_optionalViewStartYInSliderViewController];
-    }else{
-        return 20;
-    }
-}
-
-- (CGFloat)getScrollViewHeight{
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(bl_viewOfChildViewControllerHeightInSliderViewController)]) {
-        return [self.dataSource bl_viewOfChildViewControllerHeightInSliderViewController];
-    }else{
-        return [UIScreen mainScreen].bounds.size.height - optionalViewHeight - 20;
-    }
-}
 
 - (void)initializeSubViewControllerAtIndex:(NSInteger)index{
     
@@ -149,6 +112,76 @@ static const CGFloat optionalViewHeight = 40.0;
             [self.mainScrollView addSubview:vc.view];
         }
     }
+}
+
+
+#pragma mark - - Getter
+
+
+- (BLOptionalVeiw *)optionalView{
+    if (!_optionalView) {
+        _optionalView = BLOptionalVeiw.new;
+        _optionalView.sliderColor = self.sliderColor;
+        _optionalView.sliderWidth = self.sliderWidth;
+        _optionalView.centerMargin = self.centerMargin;
+        _optionalView.lfMargin = self.lfMargin;
+        _optionalView.selectedFontColor = self.selectedFontColor;
+        _optionalView.selectedFontSize = self.selectedFontSize;
+        _optionalView.normalFontColor = self.normalFontColor;
+        _optionalView.normalFontSize = self.normalFontSize;
+        _optionalView.titleArray = self.titleArray;
+    }
+    return _optionalView;
+}
+
+- (UIScrollView *)mainScrollView{
+    if (!_mainScrollView) {
+        _mainScrollView = UIScrollView.new;
+        _mainScrollView.delegate = self;
+        _mainScrollView.showsVerticalScrollIndicator = NO;
+        _mainScrollView.showsHorizontalScrollIndicator = NO;
+        _mainScrollView.pagingEnabled = YES;
+        _mainScrollView.bounces = NO;
+        _scorllView = _mainScrollView;
+    }
+    return _mainScrollView;
+}
+
+
+- (CGFloat)sliderWidth{
+    return _sliderWidth > 0 ? _sliderWidth : 37;
+}
+
+- (UIColor *)sliderColor{
+    return _sliderColor ? _sliderColor : [UIColor colorWithRed:64.0/255 green:102.0/255 blue:245.0/255 alpha:1];
+}
+
+- (CGFloat)centerMargin{
+    return _centerMargin > 0 ? _centerMargin : 25;
+}
+
+- (CGFloat)lfMargin{
+    return _lfMargin > 0 ? _lfMargin : 20;
+}
+
+- (UIFont *)selectedFontSize{
+    return _selectedFontSize ? _selectedFontSize : [UIFont boldSystemFontOfSize:18];
+}
+
+- (UIFont *)normalFontSize{
+    return _normalFontSize ? _normalFontSize : [UIFont systemFontOfSize:16];
+}
+
+- (UIColor *)selectedFontColor{
+    return _selectedFontColor ? _selectedFontColor : [UIColor colorWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1];
+}
+
+- (UIColor *)normalFontColor{
+    return _normalFontColor ? _normalFontColor : [UIColor colorWithRed:187.0/255 green:187.0/255 blue:187.0/255 alpha:1];
+}
+
+- (CGFloat)itemHeight{
+    return _itemHeight ? _itemHeight : 40 ;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'BLPart'
-    s.version          = '1.1.17'
+    s.version          = '1.1.18'
     s.summary          = 'A short description of BLPrat.'
     
     # This description is used to generate tags and improve search results.
@@ -54,8 +54,9 @@ Pod::Spec.new do |s|
         ss.source_files = 'BLPart/Classes/BLImagePickerController/**/*'
     end
     
-    s.subspec 'BLSliderViewController' do |ss|
-        ss.source_files = 'BLPart/Classes/BLSliderViewController/**/*'
+    s.subspec 'BLPagesViewController' do |ss|
+        ss.source_files = 'BLPart/Classes/BLPagesViewController/**/*'
+        ss.dependency 'Masonry'
     end
     
     
