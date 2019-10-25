@@ -22,7 +22,7 @@ typedef NSURL* _Nonnull (^DestinationPathBlock)(NSURL * _Nonnull targetPath, NSU
 /** 请求配置 */
 typedef AFHTTPRequestSerializer <AFURLRequestSerialization> * (^RequestSerializer)(AFHTTPRequestSerializer <AFURLRequestSerialization> * _Nonnull requestSerializer);
 /** 响应配置 */
-typedef void (^ResponseSerializer)(AFHTTPResponseSerializer <AFURLResponseSerialization> * _Nonnull responseSerializer);
+typedef AFHTTPResponseSerializer <AFURLResponseSerialization> * (^ResponseSerializer)(AFHTTPResponseSerializer <AFURLResponseSerialization> * _Nonnull responseSerializer);
 
 typedef NS_ENUM(NSInteger,BLURLRequestType){
     /** GET请求 */

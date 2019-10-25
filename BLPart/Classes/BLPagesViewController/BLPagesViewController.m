@@ -49,6 +49,11 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     [self initializeSubViewControllerAtIndex:0];
+}
+
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
     self.mainScrollView.contentSize = CGSizeMake(_titleArray.count *self.view.frame.size.width, self.view.frame.size.height - self.itemHeight - 10);
 }
 

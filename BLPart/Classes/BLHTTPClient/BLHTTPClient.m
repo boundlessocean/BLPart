@@ -340,7 +340,7 @@ static const AFHTTPSessionManager *sessionManager;
 
 + (void)configResponseSerializer:(ResponseSerializer)responseSerializer{
     if (responseSerializer) {
-        responseSerializer(sessionManager.responseSerializer);
+        sessionManager.responseSerializer = responseSerializer(sessionManager.responseSerializer);
     }
 }
 
