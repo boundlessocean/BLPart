@@ -57,6 +57,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) CGFloat itemHeight;
 /** 整个分页导航栏 */
 @property (nonatomic, strong, readonly) BLOptionalVeiw *optionalView;
+
+- (void)reloadData;
 @end
 
 NS_ASSUME_NONNULL_END
