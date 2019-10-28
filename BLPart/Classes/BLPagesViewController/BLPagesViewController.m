@@ -112,7 +112,7 @@
         UIViewController *vc = [self.dataSource bl_sliderViewController:self subViewControllerAtIndxe:index];
         if (![_cacheVCIndex containsObject:[NSNumber numberWithInteger:index]]) {
             [_cacheVCIndex addObject:[NSNumber numberWithInteger:index]];
-            vc.view.frame = CGRectMake(index * vc.view.frame.size.width, 0, vc.view.frame.size.width , self.mainScrollView.frame.size.height);
+            vc.view.frame = CGRectMake(index * vc.view.frame.size.width, 0, self.mainScrollView.frame.size.width , self.mainScrollView.frame.size.height);
             [self addChildViewController:vc];
             [self.mainScrollView addSubview:vc.view];
         }
