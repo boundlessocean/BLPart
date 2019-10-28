@@ -91,7 +91,9 @@
 
 - (void)setTitleArray:(NSArray<NSString *> *)titleArray{
     _titleArray = titleArray;
-    
+    for (UIView *subView in self.contentView.subviews) {
+        [subView removeFromSuperview];
+    }
     [self.contentView addSubview:self.sliderView];
     // 添加所有item
     CGFloat left = _lfMargin,
@@ -128,10 +130,11 @@
     [firstItem setTitleColor:_selectedFontColor forState:UIControlStateNormal];
     firstItem.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
     
+    CGFloat firstTitleW = [titleArray[0] sizeWithAttributes:@{NSFontAttributeName : self.selectedFontSize}].width;
     [_sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(37, 10));
         make.bottom.mas_equalTo(0);
-        make.left.mas_equalTo(self.lfMargin);
+        make.left.mas_equalTo(self.lfMargin + (firstTitleW - self->_sliderWidth)/2);
     }];
 }
 

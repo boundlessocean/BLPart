@@ -77,14 +77,6 @@
     return _titleArray;
 }
 
-#pragma mark - - Public
-- (void)reloadData{
-    [_cacheVCIndex removeAllObjects];
-    [self initializeSubViewControllerAtIndex:0];
-    _titleArray = nil;
-    self.optionalView.titleArray = self.titleArray;
-    self.mainScrollView.contentOffset = CGPointZero;
-}
 
 #pragma mark - - scrollView
 /** 偏移量控制显示状态 */

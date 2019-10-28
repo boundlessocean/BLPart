@@ -9,14 +9,16 @@
 #import "MyViewController.h"
 @import Masonry;
 @import BLPart.BLBannerView;
-@import BLPart.BLSliderViewController;
+@import BLPart.BLPagesViewController;
 
-@interface MyViewController ()<BLSliderViewControllerDataSource>
+@interface MyViewController ()<BLPagesViewControllerDataSource>
 /** 滑动选项 */
-@property (nonatomic, strong) BLSliderViewController *sliderVC;
+@property (nonatomic, strong) BLPagesViewController *sliderVC;
 @end
 
-@implementation MyViewController
+@implementation MyViewController{
+    NSArray <NSString *>* _datas;
+}
 
 - (void)viewDidLoad
 {
@@ -36,6 +38,7 @@
 //    [self addChildViewController:self.sliderVC];
 //    [self.view addSubview:self.sliderVC.view];
     
+    _datas = @[@"全部2313",@"1-8",@"9-28",@"29-58"];
     BLBannerView *banner = BLBannerView.new;
     [self.view addSubview:banner];
     [banner mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -44,14 +47,18 @@
     }];
     
     
-    
     banner.datas = @[@"http://racebmst.jingcaishuo.net//static/upfiles/analyst/5e075ac09d56d53f/20181220_173106146000_901.jpg",@"http://racebmst.jingcaishuo.net//static/upfiles/analyst/5e075ac09d56d53f/20181129_113402912000_531.jpg"];
+    
+    [self addChildViewController:self.sliderVC];
+    [self.view addSubview:self.sliderVC.view];
+    
+    self.sliderVC.view.frame = CGRectMake(0, 100, UIScreen.mainScreen.bounds.size.width, 600);
 }
 
 #pragma mark - - Getter
-- (BLSliderViewController *)sliderVC{
+- (BLPagesViewController *)sliderVC{
     if (!_sliderVC) {
-        _sliderVC = [BLSliderViewController new];
+        _sliderVC = [BLPagesViewController new];
         _sliderVC.dataSource = self;
     }
     return _sliderVC;
@@ -60,10 +67,10 @@
 
 #pragma mark - - BLSliderViewControllerDataSource
 - (NSArray<NSString *> *)bl_titlesArrayInSliderViewController{
-    return @[@"全部",@"1-8",@"9-28",@"29-58"];
+    return _datas;
 }
 
-- (__kindof UIViewController *)bl_sliderViewController:(BLSliderViewController *)sliderVC subViewControllerAtIndxe:(NSInteger)index{
+- (__kindof UIViewController *)bl_sliderViewController:(BLPagesViewController *)sliderVC subViewControllerAtIndxe:(NSInteger)index{
     return UIViewController.new;
 }
 
