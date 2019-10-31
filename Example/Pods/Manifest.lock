@@ -14,23 +14,23 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - BLPart (1.1.18):
-    - BLPart/BLBannerView (= 1.1.18)
-    - BLPart/BLHTTPClient (= 1.1.18)
-    - BLPart/BLHUDManager (= 1.1.18)
-    - BLPart/BLIAPManager (= 1.1.18)
-    - BLPart/BLImagePickerController (= 1.1.18)
-    - BLPart/BLPagesViewController (= 1.1.18)
-  - BLPart/BLBannerView (1.1.18):
+  - BLPart (1.2.24):
+    - BLPart/BLBannerView (= 1.2.24)
+    - BLPart/BLHTTPClient (= 1.2.24)
+    - BLPart/BLHUDManager (= 1.2.24)
+    - BLPart/BLIAPManager (= 1.2.24)
+    - BLPart/BLImagePickerController (= 1.2.24)
+    - BLPart/BLPagesViewController (= 1.2.24)
+  - BLPart/BLBannerView (1.2.24):
     - AFNetworking
     - Masonry
-  - BLPart/BLHTTPClient (1.1.18):
+  - BLPart/BLHTTPClient (1.2.24):
     - AFNetworking
-  - BLPart/BLHUDManager (1.1.18):
+  - BLPart/BLHUDManager (1.2.24):
     - MBProgressHUD
-  - BLPart/BLIAPManager (1.1.18)
-  - BLPart/BLImagePickerController (1.1.18)
-  - BLPart/BLPagesViewController (1.1.18):
+  - BLPart/BLIAPManager (1.2.24)
+  - BLPart/BLImagePickerController (1.2.24)
+  - BLPart/BLPagesViewController (1.2.24):
     - Masonry
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -50,7 +50,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  BLPart: 53b72c07b528c5a000c1d814b42b180fd430890b
+  BLPart: 4032abcf05f7dbc8f4be31325e6647582e134fa4
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
 

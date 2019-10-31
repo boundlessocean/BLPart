@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06B9A529B93EF18B3D33DDAC /* Pods_BLPart_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2633F146C8402DBE28CA2441 /* Pods_BLPart_Example.framework */; };
+		3CECB6FB236A8FA400C3ED6C /* MyaaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CECB6FA236A8FA400C3ED6C /* MyaaViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		2633F146C8402DBE28CA2441 /* Pods_BLPart_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLPart_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3124B2163704E854B6537EC9 /* Pods-BLPart_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLPart_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLPart_Tests/Pods-BLPart_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3CECB6F9236A8FA400C3ED6C /* MyaaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyaaViewController.h; sourceTree = "<group>"; };
+		3CECB6FA236A8FA400C3ED6C /* MyaaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyaaViewController.m; sourceTree = "<group>"; };
 		4960891B2A395E565827D42F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4E2EBCF09E80FAC123B3DFB2 /* Pods-BLPart_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLPart_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLPart_Example/Pods-BLPart_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		5E073714505DE5AE458166B5 /* Pods-BLPart_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLPart_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BLPart_Example/Pods-BLPart_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				3CECB6F9236A8FA400C3ED6C /* MyaaViewController.h */,
+				3CECB6FA236A8FA400C3ED6C /* MyaaViewController.m */,
 			);
 			name = "Example for BLPart";
 			path = BLPart;
@@ -260,6 +265,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -374,6 +380,7 @@
 			files = (
 				6003F59E195388D20070C39A /* MyAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* MyViewController.m in Sources */,
+				3CECB6FB236A8FA400C3ED6C /* MyaaViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

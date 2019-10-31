@@ -66,6 +66,7 @@
             [weakSelf.dataSource respondsToSelector:@selector(bl_selectedIndex:scorllView:)]) {
             [weakSelf.dataSource bl_selectedIndex:(index-100) scorllView:weakSelf.mainScrollView];
         }
+        !weakSelf.pageViewControllerSelectedBlock ? : weakSelf.pageViewControllerSelectedBlock(index-100,weakSelf.childViewControllers[index-100],weakSelf.mainScrollView);
     };
 }
 
@@ -97,12 +98,14 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
+    NSInteger index = scrollView.contentOffset.x/scrollView.frame.size.width;
     if (self.dataSource &&
         scrollView.contentOffset.x != _oldOffsetX &&
         [self.dataSource respondsToSelector:@selector(bl_selectedIndex:scorllView:)]) {
-        NSInteger index = scrollView.contentOffset.x/scrollView.frame.size.width;
         [self.dataSource bl_selectedIndex:index scorllView:scrollView];
     }
+    
+    !_pageViewControllerSelectedBlock ? : _pageViewControllerSelectedBlock(index,self.childViewControllers[index],scrollView);
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "MyViewController.h"
+#import "MyaaViewController.h"
 @import Masonry;
 @import BLPart.BLBannerView;
 @import BLPart.BLPagesViewController;
@@ -38,7 +39,7 @@
 //    [self addChildViewController:self.sliderVC];
 //    [self.view addSubview:self.sliderVC.view];
     
-    _datas = @[@"全部2313",@"1-8",@"9-28",@"29-58"];
+    _datas = @[@"全部得到的",@"1-8",@"9-28",@"29-58"];
     BLBannerView *banner = BLBannerView.new;
     [self.view addSubview:banner];
     [banner mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -71,7 +72,7 @@
 }
 
 - (__kindof UIViewController *)bl_sliderViewController:(BLPagesViewController *)sliderVC subViewControllerAtIndxe:(NSInteger)index{
-    return UIViewController.new;
+    return MyaaViewController.new;
 }
 
 - (CGFloat)bl_optionalViewStartYInSliderViewController{

@@ -1,6 +1,6 @@
 {
   "name": "BLPart",
-  "version": "1.1.18",
+  "version": "1.2.24",
   "summary": "A short description of BLPrat.",
   "description": "Add long description of the pod here.",
   "homepage": "https://github.com/boundlessocean/BLPart",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/boundlessocean/BLPart.git",
-    "tag": "1.1.18"
+    "tag": "1.2.24"
   },
   "platforms": {
     "ios": "8.0"

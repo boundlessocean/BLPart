@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 数据源 */
 @property (nonatomic, weak) id<BLPagesViewControllerDataSource> dataSource;
 
+/** pageVC 选中回调 */
+@property (nonatomic,copy) void(^pageViewControllerSelectedBlock)(NSInteger index,UIViewController *viewController,UIScrollView *scrollView) ;
+
 /** slider宽 */
 @property (nonatomic,assign) CGFloat sliderWidth;
 /** slider颜色 */
