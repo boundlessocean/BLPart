@@ -21,12 +21,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    BLPagesViewController *parentViewController = (BLPagesViewController *)self.parentViewController;
-    parentViewController.pageViewControllerSelectedBlock = ^(NSInteger index,
-                                                             UIViewController * _Nonnull viewController,
-                                                             UIScrollView * _Nonnull scrollView) {
-        NSLog(@"%d",index);
-    };
 }
 
 /*
