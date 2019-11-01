@@ -43,7 +43,7 @@
     
     [_mainScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(self.optionalView.mas_bottom).offset(10);
+        make.top.mas_equalTo(self.optionalView.mas_bottom).offset(5);
         make.bottom.mas_equalTo(0);
     }];
     
