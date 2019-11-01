@@ -66,7 +66,11 @@
             [weakSelf.dataSource respondsToSelector:@selector(bl_selectedIndex:scorllView:)]) {
             [weakSelf.dataSource bl_selectedIndex:(index-100) scorllView:weakSelf.mainScrollView];
         }
-        !weakSelf.pageViewControllerSelectedBlock ? : weakSelf.pageViewControllerSelectedBlock(index-100,weakSelf.childViewControllers[index-100],weakSelf.mainScrollView);
+        !weakSelf.pageViewControllerSelectedBlock ? :
+        weakSelf.pageViewControllerSelectedBlock(index-100,
+                                                 [weakSelf.dataSource bl_sliderViewController:weakSelf
+                                                                     subViewControllerAtIndxe:index-100],
+                                                 weakSelf.mainScrollView);
     };
 }
 
@@ -105,7 +109,7 @@
         [self.dataSource bl_selectedIndex:index scorllView:scrollView];
     }
     
-    !_pageViewControllerSelectedBlock ? : _pageViewControllerSelectedBlock(index,self.childViewControllers[index],scrollView);
+    !_pageViewControllerSelectedBlock ? : _pageViewControllerSelectedBlock(index,[self.dataSource bl_sliderViewController:self subViewControllerAtIndxe:index],scrollView);
 }
 
 
