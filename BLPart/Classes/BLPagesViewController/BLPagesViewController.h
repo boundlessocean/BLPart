@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 /** 选中按钮回调 */
 - (void)bl_selectedIndex:(NSInteger)index
-              scorllView:(UIScrollView *)scorllView;
+              scorllView:(UIScrollView *)scorllView
+          viewController:(UIViewController *)viewController;
 
 /** scorllView 滚动回调 */
 - (void)bl_scrollViewDidScroll:(UIScrollView *)scorllView;
@@ -30,9 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 数据源 */
 @property (nonatomic, weak) id<BLPagesViewControllerDataSource> dataSource;
-
-/** pageVC 选中回调 */
-@property (nonatomic,copy) void(^pageViewControllerSelectedBlock)(NSInteger index,UIViewController *viewController,UIScrollView *scrollView) ;
 
 /** slider宽 */
 @property (nonatomic,assign) CGFloat sliderWidth;
