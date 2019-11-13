@@ -91,8 +91,8 @@ static BOOL bl_isEditImage = YES;
                                              identifier:self.identifier];
             [self.delegate selectImageFinishedAndCaches:self.image
                                        cachesIdentifier:self.identifier
-                                        isCachesSuccess:cachesStatus];
-            [_imagePickerController dismissViewControllerAnimated:YES completion:nil];
+                                        isCachesSuccess:cachesStatus
+                                       pickerController:picker];
         }
     }
 }

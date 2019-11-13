@@ -53,7 +53,7 @@ typedef void(^AlbumFail)();
  *  @param identifier 图片的标识符(缓存的文件名称)
  *  @param isCaches   缓存是否成功
  */
-- (void)selectImageFinishedAndCaches:(UIImage * )image cachesIdentifier:(NSString *)identifier isCachesSuccess:(BOOL)isCaches;
+- (void)selectImageFinishedAndCaches:(UIImage * )image cachesIdentifier:(NSString *)identifier isCachesSuccess:(BOOL)isCaches pickerController:(UIImagePickerController *)picker;
 
 @end
 
