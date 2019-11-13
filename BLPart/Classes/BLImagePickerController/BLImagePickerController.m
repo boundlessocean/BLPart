@@ -86,7 +86,7 @@ static BOOL bl_isEditImage = YES;
         }
         NSString * url = info[UIImagePickerControllerMediaURL];
         NSLog(@"uuu:%@",url);
-        if ([self.delegate respondsToSelector:@selector(selectImageFinishedAndCaches:cachesIdentifier:isCachesSuccess:)]) {
+        if ([self.delegate respondsToSelector:@selector(selectImageFinishedAndCaches:cachesIdentifier:isCachesSuccess:pickerController:)]) {
             BOOL cachesStatus = [self saveImageToCaches:self.image
                                              identifier:self.identifier];
             [self.delegate selectImageFinishedAndCaches:self.image
