@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 数据源 */
 @property (nonatomic, weak) id<BLPagesViewControllerDataSource> dataSource;
 
+/** 默认选中index */
+@property (nonatomic,assign) NSInteger defaultSelectedIndex;
+
 /** slider宽 */
 @property (nonatomic,assign) CGFloat sliderWidth;
 /** slider颜色 */

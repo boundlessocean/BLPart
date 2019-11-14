@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'BLPart'
-    s.version          = '1.2.31'
+    s.version          = '1.2.32'
     s.summary          = 'A short description of BLPrat.'
     
     # This description is used to generate tags and improve search results.

@@ -60,6 +60,7 @@
 - (BLPagesViewController *)sliderVC{
     if (!_sliderVC) {
         _sliderVC = [BLPagesViewController new];
+        _sliderVC.defaultSelectedIndex = 1;
         _sliderVC.dataSource = self;
     }
     return _sliderVC;

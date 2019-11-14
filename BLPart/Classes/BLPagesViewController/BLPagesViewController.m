@@ -48,7 +48,10 @@
     }];
     
     self.view.backgroundColor = [UIColor clearColor];
-    [self initializeSubViewControllerAtIndex:0];
+    [self initializeSubViewControllerAtIndex:_defaultSelectedIndex];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.mainScrollView.contentOffset = CGPointMake(_defaultSelectedIndex *self.view.frame.size.width, 0);
+    });
 }
 
 
@@ -87,7 +90,6 @@
     }
     
     self.optionalView.contentOffSetX = scrollView.contentOffset.x;
-    if (index == 0) return;
     [self initializeSubViewControllerAtIndex:index];
 }
 
@@ -128,6 +130,7 @@
 - (BLOptionalVeiw *)optionalView{
     if (!_optionalView) {
         _optionalView = BLOptionalVeiw.new;
+        _optionalView.defaultSelectedIndex = _defaultSelectedIndex;
         _optionalView.sliderColor = self.sliderColor;
         _optionalView.sliderWidth = self.sliderWidth;
         _optionalView.centerMargin = self.centerMargin;

@@ -16,7 +16,8 @@
 /** 偏移量 */
 @property (nonatomic, assign) CGFloat contentOffSetX;
 
-
+/** 默认选中index */
+@property (nonatomic,assign) NSInteger defaultSelectedIndex;
 
 /** slider宽 */
 @property (nonatomic,assign) CGFloat sliderWidth;

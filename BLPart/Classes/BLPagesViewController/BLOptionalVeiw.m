@@ -126,15 +126,16 @@
     [self.contentView layoutIfNeeded];
     
     // 第一个item 更改样式
-    BLTitleItem *firstItem = [self viewWithTag:100];
+    BLTitleItem *firstItem = [self viewWithTag:100+_defaultSelectedIndex];
     [firstItem setTitleColor:_selectedFontColor forState:UIControlStateNormal];
     firstItem.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
     
-    CGFloat firstTitleW = [titleArray[0] sizeWithAttributes:@{NSFontAttributeName : self.selectedFontSize}].width;
+    CGFloat firstTitleW = [titleArray[_defaultSelectedIndex] sizeWithAttributes:@{NSFontAttributeName : self.selectedFontSize}].width;
     [_sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(37, 10));
         make.bottom.mas_equalTo(0);
-        make.left.mas_equalTo(self.lfMargin + (firstTitleW - self->_sliderWidth)/2);
+//        make.left.mas_equalTo(self.lfMargin + (firstTitleW - self->_sliderWidth)/2);
+        make.left.mas_equalTo(firstItem.frame.origin.x + (firstItem.frame.size.width - self.sliderWidth)/2);
     }];
 }
 
